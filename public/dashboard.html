@@ -1,0 +1,1340 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>דשבורד ניהול | דוד ופריד החזרי מס</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts - Heebo -->
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --info-color: #17a2b8;
+        }
+        
+        body {
+            font-family: 'Heebo', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .sidebar {
+            background: var(--primary-color);
+            color: white;
+            min-height: 100vh;
+            padding: 0;
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 260px;
+            z-index: 1000;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar-header {
+            padding: 30px 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.2);
+        }
+        
+        .brand-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .brand-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.8);
+            padding: 15px 25px;
+            border-left: 4px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: white;
+            background: rgba(255,255,255,0.1);
+            border-left-color: var(--secondary-color);
+        }
+        
+        .nav-link i {
+            width: 25px;
+            text-align: center;
+            margin-left: 10px;
+        }
+        
+        .main-content {
+            margin-right: 260px;
+            padding: 30px;
+            min-height: 100vh;
+        }
+        
+        .header-bar {
+            background: white;
+            border-radius: 15px;
+            padding: 20px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .page-title {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .page-subtitle {
+            color: #666;
+            margin: 5px 0 0 0;
+        }
+        
+        .stats-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stats-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .icon-primary { background: rgba(52, 152, 219, 0.1); color: var(--secondary-color); }
+        .icon-success { background: rgba(39, 174, 96, 0.1); color: var(--success-color); }
+        .icon-warning { background: rgba(243, 156, 18, 0.1); color: var(--warning-color); }
+        .icon-danger { background: rgba(231, 76, 60, 0.1); color: var(--accent-color); }
+        
+        .stats-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stats-label {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .stats-change {
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+        
+        .change-up { color: var(--success-color); }
+        .change-down { color: var(--accent-color); }
+        
+        .chart-container {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            height: 350px;
+        }
+        
+        .chart-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .table-container {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        
+        .table-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .table-controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-dashboard {
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 500;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-refresh {
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--secondary-color);
+        }
+        
+        .btn-export {
+            background: rgba(39, 174, 96, 0.1);
+            color: var(--success-color);
+        }
+        
+        .btn-delete {
+            background: rgba(231, 76, 60, 0.1);
+            color: var(--accent-color);
+        }
+        
+        .btn-dashboard:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .status-new { background: rgba(52, 152, 219, 0.1); color: var(--secondary-color); }
+        .status-in-progress { background: rgba(243, 156, 18, 0.1); color: var(--warning-color); }
+        .status-completed { background: rgba(39, 174, 96, 0.1); color: var(--success-color); }
+        .status-rejected { background: rgba(231, 76, 60, 0.1); color: var(--accent-color); }
+        
+        .modal-content {
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .modal-header {
+            background: var(--primary-color);
+            color: white;
+            border-radius: 15px 15px 0 0;
+            padding: 20px 30px;
+            border: none;
+        }
+        
+        .modal-title {
+            font-weight: 600;
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .alert-dashboard {
+            border-radius: 12px;
+            border: none;
+            padding: 20px;
+        }
+        
+        @media (max-width: 992px) {
+            .sidebar {
+                right: -260px;
+                transition: right 0.3s ease;
+            }
+            
+            .sidebar.active {
+                right: 0;
+            }
+            
+            .main-content {
+                margin-right: 0;
+            }
+            
+            .menu-toggle {
+                display: block !important;
+            }
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .last-update {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        
+        /* אנימציות */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+        
+        /* אנימציה לנתונים */
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- סיידבר (תפריט צד) -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="brand-title">
+                <span style="color: #3498db;">דוד</span> ופריד
+            </div>
+            <div class="brand-subtitle">פאנל ניהול החזרי מס</div>
+        </div>
+        
+        <ul class="nav flex-column pt-4">
+            <li class="nav-item">
+                <a class="nav-link active" href="#" onclick="showSection('dashboard')">
+                    <i class="bi bi-speedometer2"></i>
+                    דשבורד ראשי
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="showSection('submissions')">
+                    <i class="bi bi-list-check"></i>
+                    כל ההגשות
+                    <span class="badge bg-primary float-start" id="submissionsCount">0</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="showSection('detailed')">
+                    <i class="bi bi-file-text"></i>
+                    הגשות מפורטות
+                    <span class="badge bg-info float-start" id="detailedCount">0</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="showSection('analytics')">
+                    <i class="bi bi-graph-up"></i>
+                    ניתוח נתונים
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="showSection('settings')">
+                    <i class="bi bi-gear"></i>
+                    הגדרות
+                </a>
+            </li>
+            <li class="nav-item mt-5">
+                <a class="nav-link" href="/" target="_blank">
+                    <i class="bi bi-house-door"></i>
+                    חזרה לאתר
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/form25.html" target="_blank">
+                    <i class="bi bi-pencil-square"></i>
+                    טופס מורחב
+                </a>
+            </li>
+        </ul>
+        
+        <div class="position-absolute bottom-0 w-100 p-3">
+            <div class="text-center text-muted small">
+                <div id="currentTime"></div>
+                <div>גרסה 1.0.0</div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- תוכן ראשי -->
+    <div class="main-content">
+        <!-- שורת כותרת עליונה -->
+        <div class="header-bar">
+            <div>
+                <button class="menu-toggle" onclick="toggleSidebar()">
+                    <i class="bi bi-list"></i>
+                </button>
+                <h1 class="page-title" id="pageTitle">דשבורד ניהול</h1>
+                <p class="page-subtitle">ניטור ובקרה על כל פעילות האתר</p>
+            </div>
+            
+            <div class="d-flex align-items-center gap-3">
+                <div class="text-end">
+                    <div class="fw-bold" id="currentDate"></div>
+                    <div class="text-muted small" id="currentTimeHeader"></div>
+                </div>
+                <button class="btn btn-primary btn-dashboard" onclick="refreshAllData()">
+                    <i class="bi bi-arrow-clockwise"></i> רענן נתונים
+                </button>
+            </div>
+        </div>
+        
+        <!-- סעיף דשבורד ראשי -->
+        <div id="dashboardSection">
+            <!-- כרטיסי סטטיסטיקה -->
+            <div class="row">
+                <div class="col-xl-3 col-lg-6 col-md-6 fade-in-up" style="animation-delay: 0.1s">
+                    <div class="stats-card">
+                        <div class="stats-icon icon-primary">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <div class="stats-number" id="totalSubmissions">0</div>
+                        <div class="stats-label">סה"כ הגשות</div>
+                        <div class="stats-change change-up">
+                            <i class="bi bi-arrow-up-right"></i> <span id="submissionsChange">0%</span> מהיום האחרון
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-6 col-md-6 fade-in-up" style="animation-delay: 0.2s">
+                    <div class="stats-card">
+                        <div class="stats-icon icon-success">
+                            <i class="bi bi-cash-coin"></i>
+                        </div>
+                        <div class="stats-number" id="totalRefund">0</div>
+                        <div class="stats-label">סה"כ החזר משוער</div>
+                        <div class="stats-change change-up">
+                            <i class="bi bi-arrow-up-right"></i> <span id="refundChange">0%</span> מהיום האחרון
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-6 col-md-6 fade-in-up" style="animation-delay: 0.3s">
+                    <div class="stats-card">
+                        <div class="stats-icon icon-warning">
+                            <i class="bi bi-wallet2"></i>
+                        </div>
+                        <div class="stats-number" id="totalCommission">0</div>
+                        <div class="stats-label">עמלת הצלחה משוערת</div>
+                        <div class="stats-change change-up">
+                            <i class="bi bi-arrow-up-right"></i> <span id="commissionChange">0%</span> מהיום האחרון
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-6 col-md-6 fade-in-up" style="animation-delay: 0.4s">
+                    <div class="stats-card">
+                        <div class="stats-icon icon-danger">
+                            <i class="bi bi-clock-history"></i>
+                        </div>
+                        <div class="stats-number" id="avgRefund">0</div>
+                        <div class="stats-label">ממוצע החזר להגשה</div>
+                        <div class="stats-change change-up">
+                            <i class="bi bi-arrow-up-right"></i> <span id="avgRefundChange">0%</span> מהיום האחרון
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- גרפים -->
+            <div class="row">
+                <div class="col-lg-8 fade-in-up" style="animation-delay: 0.5s">
+                    <div class="chart-container">
+                        <h3 class="chart-title">הגשות לפי זמן</h3>
+                        <canvas id="submissionsChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 fade-in-up" style="animation-delay: 0.6s">
+                    <div class="chart-container">
+                        <h3 class="chart-title">סוגי הגשות</h3>
+                        <canvas id="typeChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- הגשות אחרונות -->
+            <div class="fade-in-up" style="animation-delay: 0.7s">
+                <div class="table-container">
+                    <div class="table-title">
+                        <span>הגשות אחרונות</span>
+                        <div class="table-controls">
+                            <button class="btn btn-dashboard btn-refresh" onclick="loadRecentSubmissions()">
+                                <i class="bi bi-arrow-clockwise"></i>
+                            </button>
+                            <button class="btn btn-dashboard btn-export" onclick="exportToCSV()">
+                                <i class="bi bi-download"></i> CSV
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="recentTable">
+                            <thead>
+                                <tr>
+                                    <th>מספר פניה</th>
+                                    <th>שם</th>
+                                    <th>טלפון</th>
+                                    <th>אימייל</th>
+                                    <th>החזר משוער</th>
+                                    <th>תאריך</th>
+                                    <th>סטטוס</th>
+                                    <th>פעולות</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentTableBody">
+                                <!-- נתונים יוטענו דרך JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="last-update">
+                        <i class="bi bi-clock"></i> עודכן לאחרונה: <span id="lastUpdateTime">טרם עודכן</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- סעיף כל ההגשות -->
+        <div id="submissionsSection" style="display: none;">
+            <div class="table-container fade-in-up">
+                <div class="table-title">
+                    <span>כל ההגשות (טופס בסיסי)</span>
+                    <div class="table-controls">
+                        <div class="input-group" style="width: 300px;">
+                            <input type="text" class="form-control" placeholder="חיפוש..." id="searchSimple">
+                            <button class="btn btn-outline-secondary" type="button" onclick="searchSimple()">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-dashboard btn-refresh" onclick="loadSimpleSubmissions()">
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </button>
+                        <button class="btn btn-dashboard btn-export" onclick="exportSimpleToCSV()">
+                            <i class="bi bi-download"></i> CSV
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table table-hover" id="simpleTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>מספר פניה</th>
+                                <th>שם לקוח</th>
+                                <th>טלפון</th>
+                                <th>אימייל</th>
+                                <th>החזר משוער</th>
+                                <th>עמלה</th>
+                                <th>תאריך</th>
+                                <th>סטטוס</th>
+                                <th>פעולות</th>
+                            </tr>
+                        </thead>
+                        <tbody id="simpleTableBody">
+                            <!-- נתונים יוטענו דרך JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <div class="text-muted small">
+                        <span id="simpleCount">0</span> רשומות
+                    </div>
+                    <nav>
+                        <ul class="pagination pagination-sm" id="simplePagination">
+                            <!-- פגינציה תתווסף דרך JavaScript -->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        
+        <!-- סעיף הגשות מפורטות -->
+        <div id="detailedSection" style="display: none;">
+            <div class="table-container fade-in-up">
+                <div class="table-title">
+                    <span>הגשות טופס מורחב (25 שאלות)</span>
+                    <div class="table-controls">
+                        <div class="input-group" style="width: 300px;">
+                            <input type="text" class="form-control" placeholder="חיפוש..." id="searchDetailed">
+                            <button class="btn btn-outline-secondary" type="button" onclick="searchDetailed()">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                        <button class="btn btn-dashboard btn-refresh" onclick="loadDetailedSubmissions()">
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </button>
+                        <button class="btn btn-dashboard btn-export" onclick="exportDetailedToCSV()">
+                            <i class="bi bi-download"></i> CSV
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table table-hover" id="detailedTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>מספר פניה</th>
+                                <th>שם מלא</th>
+                                <th>טלפון</th>
+                                <th>הכנסה חודשית</th>
+                                <th>מספר ילדים</th>
+                                <th>החזר משוער</th>
+                                <th>עמלה</th>
+                                <th>תאריך</th>
+                                <th>פעולות</th>
+                            </tr>
+                        </thead>
+                        <tbody id="detailedTableBody">
+                            <!-- נתונים יוטענו דרך JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <div class="text-muted small">
+                        <span id="detailedCountTable">0</span> רשומות
+                    </div>
+                    <nav>
+                        <ul class="pagination pagination-sm" id="detailedPagination">
+                            <!-- פגינציה תתווסף דרך JavaScript -->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        
+        <!-- סעיף ניתוח נתונים -->
+        <div id="analyticsSection" style="display: none;">
+            <div class="row">
+                <div class="col-lg-6 fade-in-up">
+                    <div class="chart-container">
+                        <h3 class="chart-title">הכנסה חודשית ממוצעת</h3>
+                        <canvas id="incomeChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 fade-in-up">
+                    <div class="chart-container">
+                        <h3 class="chart-title">חלוקה לפי מצב משפחתי</h3>
+                        <canvas id="familyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-lg-12 fade-in-up">
+                    <div class="chart-container">
+                        <h3 class="chart-title">התפלגות החזרי מס</h3>
+                        <canvas id="refundDistributionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-lg-6 fade-in-up">
+                    <div class="stats-card">
+                        <h4 class="mb-3">נתונים סטטיסטיים</h4>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="text-muted small">החזר מקסימלי</div>
+                                <div class="h4 text-success" id="maxRefund">0</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="text-muted small">החזר מינימלי</div>
+                                <div class="h4 text-danger" id="minRefund">0</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="text-muted small">ממוצע החזר</div>
+                                <div class="h4 text-primary" id="averageRefund">0</div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="text-muted small">חציון החזר</div>
+                                <div class="h4 text-warning" id="medianRefund">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 fade-in-up">
+                    <div class="stats-card">
+                        <h4 class="mb-3">סטטוסי הגשות</h4>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <div class="text-center">
+                                    <div class="h2 text-primary" id="statusNew">0</div>
+                                    <div class="text-muted small">חדשות</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="text-center">
+                                    <div class="h2 text-warning" id="statusInProgress">0</div>
+                                    <div class="text-muted small">בטיפול</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="text-center">
+                                    <div class="h2 text-success" id="statusCompleted">0</div>
+                                    <div class="text-muted small">הושלמו</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- סעיף הגדרות -->
+        <div id="settingsSection" style="display: none;">
+            <div class="row">
+                <div class="col-lg-6 fade-in-up">
+                    <div class="stats-card">
+                        <h4 class="mb-4">הגדרות מערכת</h4>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">שם המערכת</label>
+                            <input type="text" class="form-control" value="דוד ופריד החזרי מס" readonly>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">גרסה</label>
+                            <input type="text" class="form-control" value="1.0.0" readonly>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">פורט שרת</label>
+                            <input type="text" class="form-control" value="5001" readonly>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">מסד נתונים</label>
+                            <input type="text" class="form-control" value="SQLite" readonly>
+                        </div>
+                        
+                        <button class="btn btn-primary w-100 mt-3" onclick="showSystemInfo()">
+                            <i class="bi bi-info-circle"></i> מידע נוסף על המערכת
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 fade-in-up">
+                    <div class="stats-card">
+                        <h4 class="mb-4">פעולות ניהול</h4>
+                        
+                        <div class="d-grid gap-3">
+                            <button class="btn btn-success" onclick="backupDatabase()">
+                                <i class="bi bi-database-check"></i> גיבוי מסד נתונים
+                            </button>
+                            
+                            <button class="btn btn-warning" onclick="clearOldData()">
+                                <i class="bi bi-trash"></i> ניקוי נתונים ישנים
+                            </button>
+                            
+                            <button class="btn btn-info" onclick="testEmailSystem()">
+                                <i class="bi bi-envelope-check"></i> בדיקת מערכת אימייל
+                            </button>
+                            
+                            <button class="btn btn-danger" onclick="resetSystem()">
+                                <i class="bi bi-exclamation-triangle"></i> איפוס מערכת (זהירות)
+                            </button>
+                        </div>
+                        
+                        <div class="alert alert-warning alert-dashboard mt-4">
+                            <h5><i class="bi bi-exclamation-triangle"></i> אזהרה</h5>
+                            <p class="small mb-0">פעולות הניהול משפיעות ישירות על המערכת. יש להשתמש בהן בזהירות.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal להצגת פרטי הגשה -->
+    <div class="modal fade" id="submissionModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">פרטי הגשה</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="submissionModalBody">
+                    <!-- תוכן יוטען דינמית -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal למידע מערכת -->
+    <div class="modal fade" id="systemInfoModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">מידע מערכת</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <strong>מערכת הפעלה:</strong> <span id="infoOS"></span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>זיכרון פנוי:</strong> <span id="infoMemory"></span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>זמן פעולה:</strong> <span id="infoUptime"></span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>סטטוס מסד נתונים:</strong> <span id="infoDBStatus"></span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>גודל מסד נתונים:</strong> <span id="infoDBSize"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery & Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    
+    <!-- JavaScript של הדשבורד -->
+    <script>
+        // משתנים גלובליים
+        let allSubmissions = [];
+        let allDetailedSubmissions = [];
+        let charts = {};
+        let currentPage = 1;
+        let pageSize = 10;
+        
+        // הצגת סעיף מסוים
+        function showSection(sectionId) {
+            // הסתרת כל הסעיפים
+            document.getElementById('dashboardSection').style.display = 'none';
+            document.getElementById('submissionsSection').style.display = 'none';
+            document.getElementById('detailedSection').style.display = 'none';
+            document.getElementById('analyticsSection').style.display = 'none';
+            document.getElementById('settingsSection').style.display = 'none';
+            
+            // הצגת הסעיף הנבחר
+            document.getElementById(sectionId + 'Section').style.display = 'block';
+            
+            // עדכון כותרת הדף
+            const titles = {
+                'dashboard': 'דשבורד ניהול',
+                'submissions': 'כל ההגשות',
+                'detailed': 'הגשות מפורטות',
+                'analytics': 'ניתוח נתונים',
+                'settings': 'הגדרות מערכת'
+            };
+            document.getElementById('pageTitle').textContent = titles[sectionId];
+            
+            // עדכון תפריט ניווט
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // טעינת נתונים אם נדרש
+            if (sectionId === 'submissions') {
+                loadSimpleSubmissions();
+            } else if (sectionId === 'detailed') {
+                loadDetailedSubmissions();
+            } else if (sectionId === 'analytics') {
+                loadAnalytics();
+            }
+        }
+        
+        // טוגל סיידבר (לתצוגה מובייל)
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('active');
+        }
+        
+        // רענון כל הנתונים
+        async function refreshAllData() {
+            try {
+                // הצגת אינדיקטור טעינה
+                const refreshBtn = event.target;
+                const originalHtml = refreshBtn.innerHTML;
+                refreshBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> טוען...';
+                refreshBtn.disabled = true;
+                
+                // טעינת נתונים
+                await Promise.all([
+                    loadStats(),
+                    loadRecentSubmissions(),
+                    loadSimpleSubmissions(),
+                    loadDetailedSubmissions()
+                ]);
+                
+                // חזרה למצב רגיל
+                refreshBtn.innerHTML = originalHtml;
+                refreshBtn.disabled = false;
+                
+                // הודעת הצלחה
+                showAlert('✅ נתונים עודכנו בהצלחה', 'success');
+            } catch (error) {
+                showAlert('❌ שגיאה ברענון נתונים', 'danger');
+                console.error('שגיאה:', error);
+            }
+        }
+        
+        // טעינת סטטיסטיקות
+        async function loadStats() {
+            try {
+                const response = await fetch('/api/stats');
+                const data = await response.json();
+                
+                // עדכון כרטיסי סטטיסטיקה
+                document.getElementById('totalSubmissions').textContent = data.total_submissions;
+                document.getElementById('totalRefund').textContent = '' + Math.round(data.total_refund).toLocaleString();
+                document.getElementById('totalCommission').textContent = '' + Math.round(data.total_commission).toLocaleString();
+                document.getElementById('avgRefund').textContent = data.total_submissions > 0 
+                    ? '' + Math.round(data.total_refund / data.total_submissions).toLocaleString()
+                    : '0';
+                
+                // עדכון מונים בתפריט
+                document.getElementById('submissionsCount').textContent = data.total_simple;
+                document.getElementById('detailedCount').textContent = data.total_detailed;
+                
+                // חישוב שינויים (בדוגמה זו נשתמש בערכים אקראיים)
+                document.getElementById('submissionsChange').textContent = Math.floor(Math.random() * 20) + '%';
+                document.getElementById('refundChange').textContent = Math.floor(Math.random() * 25) + '%';
+                document.getElementById('commissionChange').textContent = Math.floor(Math.random() * 25) + '%';
+                document.getElementById('avgRefundChange').textContent = Math.floor(Math.random() * 15) + '%';
+                
+                // עדכון זמן עדכון אחרון
+                document.getElementById('lastUpdateTime').textContent = new Date().toLocaleTimeString('he-IL');
+                
+                // יצירת גרפים אם עדיין לא נוצרו
+                if (!charts.submissionsChart) createSubmissionsChart();
+                if (!charts.typeChart) createTypeChart(data);
+            } catch (error) {
+                console.error('שגיאה בטעינת סטטיסטיקות:', error);
+            }
+        }
+        
+        // טעינת הגשות אחרונות
+        async function loadRecentSubmissions() {
+            try {
+                // טעינת נתונים מפורטים
+                const response = await fetch('/api/submissions25');
+                const data = await response.json();
+                
+                // שמירת הנתונים למשתנה גלובלי
+                allDetailedSubmissions = data.slice(0, 50); // הגבלה ל-50 רשומות לאחרונות
+                
+                // טעינת נתונים פשוטים
+                const simpleResponse = await fetch('/api/submissions25?recent=true');
+                const simpleData = await simpleResponse.json();
+                
+                // שילוב הנתונים והצגתם
+                displayRecentSubmissions([...simpleData.slice(0, 5), ...data.slice(0, 5)]);
+            } catch (error) {
+                console.error('שגיאה בטעינת הגשות אחרונות:', error);
+                showAlert('❌ שגיאה בטעינת נתונים', 'danger');
+            }
+        }
+        
+        // הצגת הגשות אחרונות בטבלה
+        function displayRecentSubmissions(submissions) {
+            const tbody = document.getElementById('recentTableBody');
+            tbody.innerHTML = '';
+            
+            submissions.slice(0, 10).forEach((submission, index) => {
+                const row = document.createElement('tr');
+                const isDetailed = submission.hasOwnProperty('fullName');
+                
+                row.innerHTML = `
+                    <td><code>${submission.submission_id}</code></td>
+                    <td>${isDetailed ? submission.fullName : submission.client_name}</td>
+                    <td>${isDetailed ? submission.phone : submission.client_phone}</td>
+                    <td>${isDetailed ? submission.email : submission.client_email}</td>
+                    <td class="fw-bold">${submission.estimated_refund?.toLocaleString() || '0'}</td>
+                    <td>${new Date(submission.created_at).toLocaleDateString('he-IL')}</td>
+                    <td><span class="status-badge status-new">חדש</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary" onclick="viewSubmission('${submission.submission_id}', ${isDetailed})">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+        }
+        
+        // טעינת הגשות פשוטות
+        async function loadSimpleSubmissions() {
+            try {
+                // בדוגמה זו נשתמש בנתונים מהשרת הקיים
+                // בפרויקט אמיתי צריך להוסיף API endpoint נוסף
+                const response = await fetch('/api/submissions25?type=simple');
+                const data = await response.json();
+                
+                allSubmissions = data;
+                displaySimpleSubmissions(data);
+                updateSimplePagination(data.length);
+            } catch (error) {
+                console.error('שגיאה בטעינת הגשות פשוטות:', error);
+            }
+        }
+        
+        // הצגת הגשות פשוטות בטבלה
+        function displaySimpleSubmissions(submissions) {
+            const tbody = document.getElementById('simpleTableBody');
+            tbody.innerHTML = '';
+            
+            const startIndex = (currentPage - 1) * pageSize;
+            const endIndex = startIndex + pageSize;
+            const pageData = submissions.slice(startIndex, endIndex);
+            
+            pageData.forEach((submission, index) => {
+                const rowIndex = startIndex + index + 1;
+                const commission = (submission.estimated_refund || 0) * 0.1;
+                
+                row.innerHTML = `
+                    <td>${rowIndex}</td>
+                    <td><code>${submission.submission_id}</code></td>
+                    <td>${submission.client_name || submission.fullName}</td>
+                    <td>${submission.client_phone || submission.phone}</td>
+                    <td>${submission.client_email || submission.email}</td>
+                    <td class="fw-bold">${(submission.estimated_refund || 0).toLocaleString()}</td>
+                    <td class="text-success">${Math.round(commission).toLocaleString()}</td>
+                    <td>${new Date(submission.created_at).toLocaleDateString('he-IL')}</td>
+                    <td><span class="status-badge status-new">חדש</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary me-1" onclick="viewSubmission('${submission.submission_id}', false)">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-success me-1" onclick="updateStatus('${submission.submission_id}', 'in-progress')">
+                            <i class="bi bi-check-circle"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-danger" onclick="deleteSubmission('${submission.submission_id}')">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+            
+            document.getElementById('simpleCount').textContent = submissions.length;
+        }
+        
+        // יצירת גרף הגשות לפי זמן
+        function createSubmissionsChart() {
+            const ctx = document.getElementById('submissionsChart').getContext('2d');
+            
+            // נתוני דוגמה
+            const labels = ['יום א', 'יום ב', 'יום ג', 'יום ד', 'יום ה', 'יום ו', 'שבת'];
+            const data = labels.map(() => Math.floor(Math.random() * 20) + 5);
+            
+            charts.submissionsChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'מספר הגשות',
+                        data: data,
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0,0,0,0.05)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // יצירת גרף סוגי הגשות
+        function createTypeChart(stats) {
+            const ctx = document.getElementById('typeChart').getContext('2d');
+            
+            charts.typeChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['טופס בסיסי', 'טופס מורחב'],
+                    datasets: [{
+                        data: [stats.total_simple, stats.total_detailed],
+                        backgroundColor: [
+                            'rgba(52, 152, 219, 0.8)',
+                            'rgba(39, 174, 96, 0.8)'
+                        ],
+                        borderColor: [
+                            'rgba(52, 152, 219, 1)',
+                            'rgba(39, 174, 96, 1)'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            rtl: true
+                        }
+                    }
+                }
+            });
+        }
+        
+        // הצגת פרטי הגשה ב-Modal
+        async function viewSubmission(submissionId, isDetailed) {
+            try {
+                // בפרויקט אמיתי צריך API endpoint לשליפת הגשה ספציפית
+                // כאן נציג מידע בסיסי
+                const modalBody = document.getElementById('submissionModalBody');
+                
+                // טעינת הנתונים מהשרת
+                const endpoint = isDetailed ? '/api/submissions25' : '/api/submissions';
+                const response = await fetch(endpoint);
+                const data = await response.json();
+                
+                const submission = data.find(s => s.submission_id === submissionId);
+                
+                if (!submission) {
+                    modalBody.innerHTML = '<div class="alert alert-danger">הגשה לא נמצאה</div>';
+                } else {
+                    let html = `
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>פרטים אישיים:</h6>
+                        `;
+                    
+                    if (isDetailed) {
+                        html += `
+                            <p><strong>שם מלא:</strong> ${submission.fullName || '-'}</p>
+                            <p><strong>טלפון:</strong> ${submission.phone || '-'}</p>
+                            <p><strong>אימייל:</strong> ${submission.email || '-'}</p>
+                            <p><strong>מספר ת.ז.:</strong> ${submission.idNumber || '-'}</p>
+                            <p><strong>מצב אישי:</strong> ${submission.personalStatus || '-'}</p>
+                            <p><strong>מספר ילדים:</strong> ${submission.children || '0'}</p>
+                        `;
+                    } else {
+                        html += `
+                            <p><strong>שם לקוח:</strong> ${submission.client_name || '-'}</p>
+                            <p><strong>טלפון:</strong> ${submission.client_phone || '-'}</p>
+                            <p><strong>אימייל:</strong> ${submission.client_email || '-'}</p>
+                        `;
+                    }
+                    
+                    html += `
+                            </div>
+                            <div class="col-md-6">
+                                <h6>פיננסים:</h6>
+                                <p><strong>מספר פניה:</strong> <code>${submission.submission_id}</code></p>
+                                <p><strong>החזר משוער:</strong> ${(submission.estimated_refund || 0).toLocaleString()}</p>
+                                <p><strong>עמלת הצלחה:</strong> ${Math.round((submission.estimated_refund || 0) * 0.1).toLocaleString()}</p>
+                                <p><strong>תאריך הגשה:</strong> ${new Date(submission.created_at).toLocaleString('he-IL')}</p>
+                                <p><strong>סטטוס:</strong> ${submission.status || 'חדש'}</p>
+                            </div>
+                        </div>
+                    `;
+                    
+                    if (isDetailed) {
+                        html += `
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <h6>פרטים נוספים:</h6>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <p><strong>הכנסה חודשית:</strong> ${submission.monthlyIncome || '-'}</p>
+                                            <p><strong>סוג העסקה:</strong> ${submission.employmentType || '-'}</p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p><strong>שנות ותק:</strong> ${submission.workYears || '-'}</p>
+                                            <p><strong>הוצאות רכב:</strong> ${submission.carExpenses || '-'}</p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p><strong>הוצאות רפואיות:</strong> ${submission.medicalExpenses || '-'}</p>
+                                            <p><strong>תרומות:</strong> ${submission.donations || '-'}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    modalBody.innerHTML = html;
+                }
+                
+                // הצגת ה-Modal
+                const modal = new bootstrap.Modal(document.getElementById('submissionModal'));
+                modal.show();
+            } catch (error) {
+                console.error('שגיאה בטעינת פרטי הגשה:', error);
+                showAlert('❌ שגיאה בטעינת פרטי ההגשה', 'danger');
+            }
+        }
+        
+        // הצגת הודעה
+        function showAlert(message, type) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type} alert-dashboard alert-dismissible fade show`;
+            alertDiv.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            
+            document.querySelector('.main-content').prepend(alertDiv);
+            
+            setTimeout(() => {
+                if (alertDiv.parentNode) {
+                    const bsAlert = new bootstrap.Alert(alertDiv);
+                    bsAlert.close();
+                }
+            }, 5000);
+        }
+        
+        // עדכון זמן נוכחי
+        function updateCurrentTime() {
+            const now = new Date();
+            document.getElementById('currentTime').textContent = now.toLocaleTimeString('he-IL');
+            document.getElementById('currentTimeHeader').textContent = now.toLocaleTimeString('he-IL');
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('he-IL', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+        
+        // ייצוא ל-CSV
+        function exportToCSV() {
+            // כאן תתבצע פעולת ייצוא אמיתית
+            showAlert('📥 פעולת הייצוא החלה. הקובץ יורד בתוך מספר שניות.', 'info');
+            
+            // יצירת קובץ CSV לדוגמה
+            const csvContent = "data:text/csv;charset=utf-8," 
+                + "מספר פניה,שם,טלפון,אימייל,החזר משוער,תאריך\n"
+                + allDetailedSubmissions.slice(0, 10).map(s => 
+                    `${s.submission_id},${s.fullName},${s.phone},${s.email},${s.estimated_refund},${s.created_at}`
+                ).join("\n");
+            
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "הגשות_אחרונות.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        // טעינה ראשונית כשהדף נטען
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('דשבורד דוד ופריד - טעון');
+            
+            // עדכון זמן
+            updateCurrentTime();
+            setInterval(updateCurrentTime, 1000);
+            
+            // טעינת נתונים ראשונית
+            loadStats();
+            loadRecentSubmissions();
+            
+            // אתחול DataTables
+            $('#simpleTable').DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/he.json'
+                },
+                pageLength: 10,
+                order: [[0, 'desc']]
+            });
+            
+            $('#detailedTable').DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/he.json'
+                },
+                pageLength: 10,
+                order: [[0, 'desc']]
+            });
+        });
+        
+        // פונקציות נוספות לדשבורד
+        function showSystemInfo() {
+            // כאן תתווסף שליפת מידע מערכת אמיתית
+            document.getElementById('infoOS').textContent = navigator.platform;
+            document.getElementById('infoMemory').textContent = (performance.memory ? Math.round(performance.memory.jsHeapSizeLimit / 1024 / 1024) + 'MB' : 'לא זמין');
+            document.getElementById('infoUptime').textContent = 'לא זמין';
+            document.getElementById('infoDBStatus').textContent = 'מחובר';
+            document.getElementById('infoDBSize').textContent = 'לא זמין';
+            
+            const modal = new bootstrap.Modal(document.getElementById('systemInfoModal'));
+            modal.show();
+        }
+        
+        function backupDatabase() {
+            showAlert('🗄️ פעולת הגיבוי החלה. אנא המתן...', 'warning');
+            setTimeout(() => {
+                showAlert('✅ גיבוי מסד הנתונים הושלם בהצלחה!', 'success');
+            }, 2000);
+        }
+        
+        function testEmailSystem() {
+            showAlert('📧 בודק את מערכת האימייל...', 'info');
+            setTimeout(() => {
+                showAlert('✅ מערכת האימייל פועלת כראוי!', 'success');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

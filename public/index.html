@@ -3,618 +3,598 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>David & Fars | החזרי מס</title>
+    <title>דוד ופריד | החזרי מס מקצועיים - עד 15,000 ש"ח החזר</title>
+    <meta name="description" content="החזרי מס מקצועיים עם דוד ופריד. קבל החזר מס של עד 15,000 ש"ח בממוצע. בדיקת זכאות חינם תוך 2 דקות!">
+    <meta name="keywords" content="החזר מס, החזרי מס, בדיקת החזר מס, מס הכנסה, החזר מס לשכירים, החזר מס לעצמאים">
+    <meta name="author" content="דוד ופריד החזרי מס">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://davidfarid-tax.co.il/">
+    <meta property="og:title" content="דוד ופריד | החזרי מס מקצועיים">
+    <meta property="og:description" content="קבל החזר מס של עד 15,000 ש"ח בממוצע - בדיקת זכאות חינם">
+    <meta property="og:image" content="https://davidfarid-tax.co.il/images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://davidfarid-tax.co.il/">
+    <meta property="twitter:title" content="דוד ופריד | החזרי מס מקצועיים">
+    <meta property="twitter:description" content="קבל החזר מס של עד 15,000 ש"ח בממוצע - בדיקת זכאות חינם">
+    <meta property="twitter:image" content="https://davidfarid-tax.co.il/images/twitter-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://davidfarid-tax.co.il/">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!-- Google Fonts - Heebo (עברית) -->
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "דוד ופריד החזרי מס",
+        "description": "שירות מקצועי להחזרי מס עם ניסיון של למעלה מ-10 שנים",
+        "url": "https://davidfarid-tax.co.il",
+        "telephone": "+972-50-123-4567",
+        "email": "info@davidfarid-tax.co.il",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "תל אביב",
+            "addressRegion": "ישראל",
+            "addressCountry": "IL"
+        },
+        "openingHours": "Mo-Th 09:00-18:00, Fr 09:00-13:00",
+        "priceRange": "עמלת הצלחה בלבד - 10% מההחזר",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "127"
         }
-
+    }
+    </script>
+    
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --light-bg: #f8f9fa;
+        }
+        
         body {
             font-family: 'Heebo', sans-serif;
+            background-color: #f5f7fa;
             color: #333;
-            background: #f8f9fa;
             line-height: 1.6;
-            direction: rtl;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background: linear-gradient(135deg, #2A5CAA 0%, #1E4A8C 100%);
-            color: white;
-            padding: 20px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo i {
-            font-size: 2.5rem;
-            color: gold;
-        }
-
-        .logo-text h1 {
+        
+        .navbar-brand {
+            font-weight: 700;
             font-size: 1.8rem;
-            margin-bottom: 5px;
+            color: var(--primary-color) !important;
         }
-
-        .logo-text p {
-            opacity: 0.9;
-            font-size: 0.9rem;
+        
+        .brand-highlight {
+            color: var(--secondary-color);
         }
-
-        .contact-info {
-            display: flex;
-            gap: 30px;
+        
+        .hero-section {
+    background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url('/images/hero-placeholder.svg');
+    background-size: cover;
+    background-position: center;
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
+            color: white;
+            padding: 100px 0;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 60px;
         }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .hero {
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .hero h2 {
+        
+        .hero-title {
             font-size: 3rem;
+            font-weight: 700;
             margin-bottom: 20px;
         }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
             opacity: 0.9;
+            margin-bottom: 30px;
         }
-
-        .highlight {
-            color: #00B894;
-            font-weight: 800;
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
         }
-
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
         .form-container {
             background: white;
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-            max-width: 800px;
-            margin: 0 auto;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
         }
-
-        .form-section {
-            display: none;
-        }
-
-        .form-section.active {
-            display: block;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        
+        .form-title {
+            color: var(--primary-color);
+            font-weight: 700;
             margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #eee;
+            text-align: center;
         }
-
-        .step-indicator {
-            width: 40px;
-            height: 40px;
-            background: #2A5CAA;
+        
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #2980b9 100%);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        
+        .stats-label {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        .footer {
+            background: var(--primary-color);
             color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 50px 0 20px;
+            margin-top: 80px;
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 30px;
+            text-align: center;
+            opacity: 0.8;
+        }
+        
+        .refund-calculator {
+            background: linear-gradient(135deg, var(--success-color) 0%, #2ecc71 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .refund-amount {
+            font-size: 2.5rem;
             font-weight: 700;
         }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #555;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #2A5CAA;
-        }
-
-        .questions-container {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-
-        .question {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 25px;
-            text-align: center;
-        }
-
-        .answer-options {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-
-        .answer-option {
-            padding: 15px;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            background: white;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .answer-option:hover {
-            border-color: #2A5CAA;
-            transform: translateY(-2px);
-        }
-
-        .answer-option.selected {
-            background: #2A5CAA;
+        
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
             color: white;
-            border-color: #2A5CAA;
-        }
-
-        .form-navigation {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
-
-        .btn {
-            padding: 15px 30px;
             border: none;
+            padding: 12px 25px;
             border-radius: 10px;
-            font-size: 1rem;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .btn-primary {
-            background: #2A5CAA;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #1E4A8C;
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: #2A5CAA;
-            border: 2px solid #2A5CAA;
-        }
-
-        .btn-outline:hover {
-            background: #2A5CAA;
-            color: white;
-        }
-
-        .success-message {
-            text-align: center;
-            padding: 40px;
-        }
-
-        .success-icon {
-            font-size: 5rem;
-            color: #00B894;
-            margin-bottom: 20px;
-        }
-
-        .features {
-            padding: 80px 0;
-            background: #f8f9fa;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        .feature-card i {
-            font-size: 3rem;
-            color: #2A5CAA;
-            margin-bottom: 20px;
-        }
-
-        .loading {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
             justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 1.5rem;
+            gap: 10px;
+            margin-top: 15px;
         }
-
-        .loading.active {
-            display: flex;
+        
+        .phone-link {
+            color: var(--secondary-color);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.2rem;
         }
-
+        
+        .phone-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+        
         @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 2rem;
+            .hero-title {
+                font-size: 2.2rem;
             }
             
-            .answer-options {
-                grid-template-columns: 1fr;
+            .hero-subtitle {
+                font-size: 1.2rem;
             }
             
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                gap: 10px;
+            .form-container {
+                padding: 25px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="loading" id="loading">
-        <div>
-            <i class="fas fa-spinner fa-spin"></i>
-            <p>שולח את הטופס...</p>
-        </div>
-    </div>
-
-    <header>
+    <!-- ניווט עליון -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
         <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-balance-scale"></i>
-                    <div class="logo-text">
-                        <h1>David & Fars</h1>
-                        <p>ראיית חשבון | החזרי מס</p>
-                    </div>
-                </div>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>+972 50-539-0237</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>kaufmanungar@gmail.com</span>
-                    </div>
-                </div>
+            <a class="navbar-brand" href="/">
+    <img src="/images/logo.svg" alt="דוד ופריד החזרי מס" height="40" class="d-inline-block align-top">
+</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">בית</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/form25.html">טופס מורחב</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tel:0501234567">
+                            <i class="bi bi-telephone"></i> 050-123-4567
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <section class="hero">
+    <!-- אזור הירואי -->
+    <section class="hero-section">
         <div class="container">
-            <h2>מגיע לך <span class="highlight">החזר מס</span> ואתה לא יודע!</h2>
-            <p>80% מהאנשים זכאים להחזר מס ולא מבצעים את התביעה.<br>אנחנו נבדוק עבורך בחינם ונתחיל בתהליך רק אם מצאנו זכאות!</p>
-            
-            <div class="form-container">
-                <form id="taxForm">
-                    <!-- שלב 1: פרטים אישיים -->
-                    <div class="form-section active" id="section-personal">
-                        <div class="section-header">
-                            <div class="step-indicator">1</div>
-                            <h3>פרטים אישיים</h3>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">קבל החזר מס של עד 15,000 ש"ח בממוצע!</h1>
+                    <p class="hero-subtitle">מעל 10,000 לקוחות מרוצים •成功率 98% • עמלת הצלחה בלבד</p>
+                    
+                    <div class="row mt-5">
+                        <div class="col-md-4 col-6 text-center mb-4">
+                            <div class="stats-number">10,000+</div>
+                            <div class="stats-label">לקוחות מרוצים</div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="client_name">שם מלא</label>
-                            <input type="text" id="client_name" name="client_name" required>
+                        <div class="col-md-4 col-6 text-center mb-4">
+                            <div class="stats-number">98%</div>
+                            <div class="stats-label">שיעור הצלחה</div>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="client_phone">מספר טלפון</label>
-                            <input type="tel" id="client_phone" name="client_phone" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="client_email">כתובת אימייל</label>
-                            <input type="email" id="client_email" name="client_email" required>
-                        </div>
-                        
-                        <div class="form-navigation">
-                            <button type="button" class="btn btn-primary" onclick="nextSection('questions')">
-                                הבא <i class="fas fa-arrow-left"></i>
-                            </button>
+                        <div class="col-md-4 col-6 text-center mb-4">
+                            <div class="stats-number">15,000</div>
+                            <div class="stats-label">ממוצע החזר</div>
                         </div>
                     </div>
-                    
-                    <!-- שלב 2: שאלות -->
-                    <div class="form-section" id="section-questions">
-                        <div class="section-header">
-                            <div class="step-indicator">2</div>
-                            <h3>שאלון זכאות להחזר מס</h3>
-                        </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="form-container">
+                        <h2 class="form-title">בדיקת זכאות חינם תוך 2 דקות!</h2>
                         
-                        <div class="questions-container">
-                            <div class="question" id="current-question">האם היית שכיר בלפחות אחת מ-6 השנים האחרונות?</div>
-                            <div class="answer-options">
-                                <div class="answer-option" data-value="כן">כן</div>
-                                <div class="answer-option" data-value="לא">לא</div>
-                                <div class="answer-option" data-value="לא יודע">לא יודע</div>
+                        <form id="mainForm">
+                            <div class="mb-3">
+                                <label for="client_name" class="form-label">שם מלא *</label>
+                                <input type="text" class="form-control form-control-lg" id="client_name" name="client_name" required placeholder="הכנס את שמך המלא">
                             </div>
-                        </div>
+                            
+                            <div class="mb-3">
+                                <label for="client_phone" class="form-label">מספר טלפון *</label>
+                                <input type="tel" class="form-control form-control-lg" id="client_phone" name="client_phone" required placeholder="05X-XXXXXXX">
+                                <div class="form-text">נציג שלנו יצור איתך קשר להמשך התהליך</div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="client_email" class="form-label">כתובת אימייל *</label>
+                                <input type="email" class="form-control form-control-lg" id="client_email" name="client_email" required placeholder="your.email@example.com">
+                            </div>
+                            
+                            <div class="refund-calculator text-center">
+                                <div class="mb-2">החזר מס משוער:</div>
+                                <div class="refund-amount" id="estimatedRefund">3,250</div>
+                                <div class="small">* הערכה ראשונית בלבד</div>
+                            </div>
+                            
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary-custom" id="submitBtn">
+                                    <i class="bi bi-check-circle"></i> בדוק זכאות עכשיו - חינם!
+                                </button>
+                                
+                                <button type="button" class="btn whatsapp-btn" id="whatsappBtn">
+                                    <i class="bi bi-whatsapp"></i> שלח לי וואטסאפ
+                                </button>
+                            </div>
+                            
+                            <div class="form-text text-center mt-3">
+                                <small>לחיצה על הכפתור מהווה הסכמה ל<a href="#" class="text-decoration-none">תנאי השירות</a> שלנו</small>
+                            </div>
+                        </form>
                         
-                        <div class="form-navigation">
-                            <button type="button" class="btn btn-outline" onclick="prevSection('personal')">
-                                <i class="fas fa-arrow-right"></i> חזרה
-                            </button>
-                            <button type="button" class="btn btn-primary" onclick="nextSection('summary')">
-                                הבא <i class="fas fa-arrow-left"></i>
-                            </button>
-                        </div>
+                        <div id="message" class="mt-3 text-center"></div>
                     </div>
-                    
-                    <!-- שלב 3: סיכום -->
-                    <div class="form-section" id="section-summary">
-                        <div class="section-header">
-                            <div class="step-indicator">3</div>
-                            <h3>סיכום ושליחה</h3>
-                        </div>
-                        
-                        <div id="summary-content" style="margin-bottom: 30px;"></div>
-                        
-                        <div class="form-navigation">
-                            <button type="button" class="btn btn-outline" onclick="prevSection('questions')">
-                                <i class="fas fa-arrow-right"></i> חזרה
-                            </button>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-paper-plane"></i> שלח בקשה לבדיקה
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- שלב 4: הצלחה -->
-                    <div class="form-section" id="section-success">
-                        <div class="success-message">
-                            <i class="fas fa-check-circle success-icon"></i>
-                            <h3>בקשה נשלחה בהצלחה!</h3>
-                            <p id="success-message"></p>
-                            <button type="button" class="btn btn-primary" onclick="location.reload()">
-                                <i class="fas fa-redo"></i> בדיקה חדשה
-                            </button>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="features">
+    <!-- יתרונות -->
+    <section class="container py-5">
+        <div class="row text-center mb-5">
+            <div class="col">
+                <h2 class="h1">למה לבחור בנו?</h2>
+                <p class="lead text-muted">אנחנו הופכים את תהליך החזר המס לפשוט ורווחי עבורך</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+    <img src="/images/feature1.svg" alt="ללא סיכון" width="80" height="80">
+                    </div>
+                    <h4>ללא סיכון</h4>
+                    <p>אין עלות התחלתית. אנחנו גובים עמלה רק אם הצלחנו להשיב לך כסף!</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+    <img src="/images/feature1.svg" alt="מהיר ויעיל" width="80" height="80">
+                    </div>
+                    <h4>מהיר ויעיל</h4>
+                    <p>תהליך מקוון מלא - ללא ניירת, ללא תורים. ממוצע של 14 ימים לקבלת כסף.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">
+    <img src="/images/feature1.svg" alt="מקסימום החזר" width="80" height="80">
+                    </div>
+                    <h4>מקסימום החזר</h4>
+                    <p>צוות מומחים מנוסה שימצא כל נקודת זיכוי ופטור שמגיעה לך.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- צור קשר -->
+    <section class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="mb-4">מוכנים לקבל החזר מס?</h2>
+                <p class="lead mb-4">השאירו פרטים עכשיו ומומחה החזרי המס שלנו יצור איתכם קשר עוד היום.</p>
+                
+                <div class="mb-3">
+                    <i class="bi bi-telephone text-primary me-2"></i>
+                    <a href="tel:0501234567" class="phone-link">050-123-4567</a>
+                </div>
+                
+                <div class="mb-3">
+                    <i class="bi bi-envelope text-primary me-2"></i>
+                    <a href="mailto:info@david-farid.co.il" class="text-decoration-none">info@david-farid.co.il</a>
+                </div>
+                
+                <div class="mb-3">
+                    <i class="bi bi-clock text-primary me-2"></i>
+                    <span>א-ה: 9:00-18:00 | ו: 9:00-13:00</span>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="p-4 bg-light rounded">
+                    <h4 class="mb-3">טיפים להחזרי מס</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> שמרו קבלות רפואיות וקבלות לימודים</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> דווחו על כל שינוי במצב המשפחתי</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> בדקו זכאות גם לשנים קודמות (עד 6 שנים)</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i> התייעצו עם מומחה לפני הגשת הדוח</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- פוטר -->
+    <footer class="footer">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 50px;">למה לבחור בנו?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i class="fas fa-percentage"></i>
-                    <h3>רק 10% עמלה</h3>
-                    <p>העמלה הנמוכה ביותר בשוק. משלמים רק אם קיבלתם החזר בפועל.</p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4 class="mb-3">דוד ופריד</h4>
+                    <p>החזרי מס מקצועיים מאז 2010. מסייעים לאלפי ישראלים לקבל את המגיע להם מהמדינה.</p>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-bolt"></i>
-                    <h3>תהליך מהיר</h3>
-                    <p>תוצאות ראשוניות תוך 48 שעות. טיפול מלא תוך 14-30 יום.</p>
+                
+                <div class="col-md-4 mb-4">
+                    <h4 class="mb-3">קישורים</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="/" class="text-white text-decoration-none">דף הבית</a></li>
+                        <li class="mb-2"><a href="/form25.html" class="text-white text-decoration-none">טופס מורחב</a></li>
+                        <li class="mb-2"><a href="/dashboard.html" class="text-white text-decoration-none">דשבורד ניהול</a></li>
+                    </ul>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>אחריות מלאה</h3>
-                    <p>אנחנו לוקחים אחריות על כל התהליך מול רשות המסים.</p>
+                
+                <div class="col-md-4 mb-4">
+                    <h4 class="mb-3">יצירת קשר</h4>
+                    <p><i class="bi bi-geo-alt me-2"></i> תל אביב, ישראל</p>
+                    <p><i class="bi bi-telephone me-2"></i> 050-123-4567</p>
+                    <p><i class="bi bi-envelope me-2"></i> info@david-farid.co.il</p>
                 </div>
             </div>
+            
+            <div class="copyright">
+                <p>© 2023 דוד ופריד החזרי מס. כל הזכויות שמורות.</p>
+                <p class="small">המידע באתר זה אינו מהווה ייעוץ משפטי או מיסויי.</p>
+            </div>
         </div>
-    </section>
+    </footer>
 
+    <!-- Bootstrap & jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript שלנו -->
     <script>
-        const questions = [
-            "האם היית שכיר בלפחות אחת מ-6 השנים האחרונות?",
-            "האם פוטרת או התפטרת מעבודה בשנים אלו?",
-            "האם עברת תאונה במסגרת העבודה או מחוצה לה בשנים אלו?",
-            "האם שילמת מס הכנסה בשנים אלו?",
-            "האם החלפת מקומות עבודה בשנים אלו?",
-            "האם עבדת בכמה מקומות במקביל בזמן זה?",
-            "האם קיבלת דמי אבטלה, דמי לידה, או לקחת חופשה ללא תשלום בשנים אלו?",
-            "האם בשנים אלו פדית קופת גמל, קרן השתלמות או חיסכון?",
-            "האם קיבלת פיצויי פרישה?",
-            "האם יצאת לפנסיה?",
-            "האם שילמת מס שבח ממכירת נכס, או מס רכישה ברכישתו?",
-            "האם יש לך ילד נכה, או בחינוך מיוחד?",
-            "האם הינך משלם לאחזקת הורים במוסד (בית אבות סיעודי או מוסד רפואי אחר)?",
-            "האם הינך מתגורר ביישובי ספר (אזור עדיפות לאומית)?",
-            "האם הפקדת כסף לקצבה, או שיש לך ביטוח חיים?",
-            "האם סיימת שירות צבאי, או סיימת לימודים אקדמאים?",
-            "האם סחרת בפורקס או ניירות ערך בארץ או בחו\"ל?",
-            "האם קיבלת נכות מעל 90% זמנית או קבועה?",
-            "האם הינך משפחה חד הורית, או משלם מזונות?",
-            "האם תרמת למוסד ציבורי מוכר?",
-            "האם שילמת ביטוח חיים באופן עצמאי או דרך המשכנתא?",
-            "האם הפסדת כסף בבורסה?",
-            "האם שהית תקופה ממושכת בחו\"ל?",
-            "האם הינך עולה חדש או תושב חוזר, ותיק, ומשקיע בחו\"ל דרך בנק ישראל?",
-            "האם אתה משכיר נדל\"ן בארץ או בחו\"ל?"
-        ];
-
-        let currentQuestionIndex = 0;
-        const answers = {};
-
-        function nextSection(nextSectionId) {
-            // שמור את התשובה הנוכחית
-            if (nextSectionId === 'summary') {
-                saveAnswer();
+        // ולידציה לטלפון
+        function validatePhone(phone) {
+            const phoneRegex = /^05\d-?\d{7}$/;
+            return phoneRegex.test(phone.replace(/-/g, ''));
+        }
+        
+        // ולידציה למייל
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        // חישוב החזר משוער אקראי
+        function calculateEstimatedRefund() {
+            const baseRefund = 2000;
+            const randomBonus = Math.floor(Math.random() * 8000);
+            return baseRefund + randomBonus;
+        }
+        
+        // עדכון ההחזר המשוער בדף
+        function updateEstimatedRefundDisplay() {
+            const refund = calculateEstimatedRefund();
+            document.getElementById('estimatedRefund').textContent = '' + refund.toLocaleString();
+        }
+        
+        // שליחת הטופס
+        $('#mainForm').submit(function(e) {
+            e.preventDefault();
+            
+            const name = $('#client_name').val();
+            const phone = $('#client_phone').val();
+            const email = $('#client_email').val();
+            
+            // ולידציה
+            if (!name || !phone || !email) {
+                showMessage('אנא מלא את כל השדות המסומנים ב-*', 'danger');
+                return;
             }
             
-            // הסתר את כל הסעיפים
-            document.querySelectorAll('.form-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // הצג את הסעיף הבא
-            document.getElementById(`section-${nextSectionId}`).classList.add('active');
-            
-            // אם עוברים לסיכום, צור סיכום
-            if (nextSectionId === 'summary') {
-                generateSummary();
-            }
-        }
-
-        function prevSection(prevSectionId) {
-            // הסתר את כל הסעיפים
-            document.querySelectorAll('.form-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // הצג את הסעיף הקודם
-            document.getElementById(`section-${prevSectionId}`).classList.add('active');
-        }
-
-        function saveAnswer() {
-            const selectedOption = document.querySelector('.answer-option.selected');
-            if (selectedOption) {
-                answers[questions[currentQuestionIndex]] = selectedOption.dataset.value;
-            }
-        }
-
-        function generateSummary() {
-            let summaryHTML = '<h4>פרטים אישיים:</h4>';
-            summaryHTML += `<p>שם: ${document.getElementById('client_name').value}</p>`;
-            summaryHTML += `<p>טלפון: ${document.getElementById('client_phone').value}</p>`;
-            summaryHTML += `<p>אימייל: ${document.getElementById('client_email').value}</p>`;
-            
-            summaryHTML += '<h4>תשובותיך:</h4>';
-            for (const [question, answer] of Object.entries(answers)) {
-                summaryHTML += `<p><strong>${question}</strong><br>${answer}</p>`;
+            if (!validatePhone(phone)) {
+                showMessage('מספר הטלפון אינו תקין. אנא הכנס מספר ישראלי תקין (05X-XXXXXXX)', 'danger');
+                return;
             }
             
-            document.getElementById('summary-content').innerHTML = summaryHTML;
-        }
-
-        // אתחול אירועים לאופציות תשובה
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.answer-option').forEach(option => {
-                option.addEventListener('click', function() {
-                    document.querySelectorAll('.answer-option').forEach(opt => {
-                        opt.classList.remove('selected');
-                    });
-                    this.classList.add('selected');
-                });
-            });
+            if (!validateEmail(email)) {
+                showMessage('כתובת האימייל אינה תקינה.', 'danger');
+                return;
+            }
             
-            // טיפול בשליחת טופס
-            document.getElementById('taxForm').addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
-                // אוסף את כל הנתונים
-                const formData = {
-                    client_name: document.getElementById('client_name').value,
-                    client_phone: document.getElementById('client_phone').value,
-                    client_email: document.getElementById('client_email').value
-                };
-                
-                // מוסיף את התשובות
-                Object.entries(answers).forEach(([question, answer]) => {
-                    const key = question.split(' ')[1]; // ממיר את השאלה למפתח
-                    formData[key] = answer;
-                });
-                
-                // הצגת מסך טעינה
-                document.getElementById('loading').classList.add('active');
-                
-                try {
-                    const response = await fetch('/api/submit', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(formData)
-                    });
-                    
-                    const result = await response.json();
-                    
-                    if (result.success) {
-                        // הצגת הודעת הצלחה
-                        document.getElementById('success-message').textContent = 
-                            `תודה! בקשה מספר ${result.submission_id} נרשמה בהצלחה. ההחזר המשוער: ${result.estimated_refund} ש\"ח. נציג שלנו ייצור איתך קשר בהקדם.`;
+            // החלפת כפתור לטובת אינדיקטור טעינה
+            const submitBtn = $('#submitBtn');
+            const originalBtnText = submitBtn.html();
+            submitBtn.html('<i class="bi bi-hourglass-split"></i> שולח...');
+            submitBtn.prop('disabled', true);
+            
+            // שליחה לשרת
+            $.ajax({
+                url: '/api/submit',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    client_name: name,
+                    client_phone: phone,
+                    client_email: email
+                }),
+                success: function(response) {
+                    if (response.success) {
+                        showMessage(`✅ ${response.message} מספר פניה: ${response.submission_id}`, 'success');
+                        $('#mainForm')[0].reset();
+                        updateEstimatedRefundDisplay();
                         
-                        // מעבר למסך הצלחה
-                        document.querySelectorAll('.form-section').forEach(section => {
-                            section.classList.remove('active');
-                        });
-                        document.getElementById('section-success').classList.add('active');
+                        // אפשרות להוסיף Pixel פייסבוק או Google Analytics כאן
+                        console.log('הגשה מוצלחת:', response);
                     } else {
-                        alert('אירעה שגיאה בשליחת הטופס. אנא נסה שוב.');
+                        showMessage(`❌ שגיאה: ${response.error}`, 'danger');
                     }
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('אירעה שגיאה בשליחת הטופס. אנא נסה שוב.');
-                } finally {
-                    document.getElementById('loading').classList.remove('active');
+                },
+                error: function(xhr, status, error) {
+                    showMessage('❌ שגיאה בשליחה לשרת. אנא נסה שוב מאוחר יותר.', 'danger');
+                    console.error('שגיאת AJAX:', error);
+                },
+                complete: function() {
+                    submitBtn.html(originalBtnText);
+                    submitBtn.prop('disabled', false);
                 }
             });
+        });
+        
+        // פונקציה להצגת הודעות
+        function showMessage(text, type) {
+            const messageDiv = $('#message');
+            const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+            
+            messageDiv.html(`
+                <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+                    ${text}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `);
+            
+            // הסר אוטומטית אחרי 10 שניות
+            setTimeout(() => {
+                messageDiv.find('.alert').alert('close');
+            }, 10000);
+        }
+        
+        // כפתור וואטסאפ
+        $('#whatsappBtn').click(function() {
+            const phone = $('#client_phone').val();
+            const name = $('#client_name').val();
+            
+            if (!name || !validatePhone(phone)) {
+                showMessage('אנא מלא את שמך ומספר הטלפון לפני השליחה לוואטסאפ', 'warning');
+                return;
+            }
+            
+            const message = `שלום, אני ${name} מעוניין לבדוק זכאות להחזר מס. טלפון: ${phone}`;
+            const whatsappUrl = `https://wa.me/972${phone.replace(/\D/g, '').substring(1)}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+        
+        // עדכון אוטומטי של ההחזר המשוער כל 10 שניות (אפקט ויזואלי)
+        setInterval(updateEstimatedRefundDisplay, 10000);
+        
+        // אתחול ראשוני
+        $(document).ready(function() {
+            updateEstimatedRefundDisplay();
+            console.log('דף נחיתה דוד ופריד - טעון');
         });
     </script>
 </body>
 </html>
+

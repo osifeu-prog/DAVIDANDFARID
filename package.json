@@ -1,0 +1,27 @@
+﻿{
+  "name": "david-fars-tax-refund",
+  "version": "1.0.0",
+  "description": "Professional tax refund system for David & Farid Accounting",
+  "main": "server_simple.js",
+  "scripts": {
+    "start": "node server_simple.js",
+    "dev": "node server.js",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": [
+    "tax-refund",
+    "accounting",
+    "israel",
+    "david-farid"
+  ],
+  "author": "David & Farid Accounting",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}

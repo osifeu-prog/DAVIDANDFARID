@@ -1,0 +1,7 @@
+﻿User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /dashboard.html
+Disallow: /api/
+
+Sitemap: https://davidfarid-tax.co.il/sitemap.xml

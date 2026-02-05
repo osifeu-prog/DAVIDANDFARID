@@ -1,0 +1,1031 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>טופס מורחב להחזרי מס | דוד ופריד</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!-- Google Fonts - Heebo -->
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+        }
+        
+        body {
+            font-family: 'Heebo', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary-color) !important;
+        }
+        
+        .brand-highlight {
+            color: var(--secondary-color);
+        }
+        
+        .form-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
+            color: white;
+            padding: 60px 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 40px;
+        }
+        
+        .form-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .form-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .form-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--secondary-color);
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .section-icon {
+            color: var(--secondary-color);
+            margin-left: 10px;
+        }
+        
+        .form-control-lg {
+            border-radius: 10px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control-lg:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 8px;
+        }
+        
+        .required-star {
+            color: var(--accent-color);
+        }
+        
+        .progress-container {
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+        }
+        
+        .progress-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .progress-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .progress-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            background: #f8f9fa;
+        }
+        
+        .step-number {
+            width: 35px;
+            height: 35px;
+            background: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-left: 15px;
+            flex-shrink: 0;
+        }
+        
+        .step-active .step-number {
+            background: var(--success-color);
+        }
+        
+        .step-text {
+            flex-grow: 1;
+        }
+        
+        .refund-preview {
+            background: linear-gradient(135deg, var(--success-color) 0%, #2ecc71 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .refund-amount {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #2980b9 100%);
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            width: 100%;
+            color: white;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        .help-text {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .tooltip-icon {
+            color: var(--secondary-color);
+            cursor: help;
+            margin-right: 5px;
+        }
+        
+        .alert-message {
+            border-radius: 12px;
+            border: none;
+            margin-top: 20px;
+        }
+        
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 30px;
+            text-align: center;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .form-title {
+                font-size: 2rem;
+            }
+            
+            .form-section {
+                padding: 20px;
+            }
+            
+            .progress-container {
+                position: static;
+                margin-bottom: 30px;
+            }
+        }
+        
+        /* אנימציות */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .highlight-row {
+            background-color: #fffde7 !important;
+            transition: background-color 0.3s ease;
+        }
+        
+        /* עיצוב כפתורי בחירה */
+        .btn-option {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 10px;
+            text-align: right;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            background: white;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-option:hover {
+            border-color: var(--secondary-color);
+            background: #f8fafc;
+        }
+        
+        .btn-option.active {
+            border-color: var(--success-color);
+            background: #e8f5e9;
+            color: var(--success-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- ניווט עליון -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <span class="brand-highlight">דוד</span> ופריד
+                <small class="d-block text-muted" style="font-size: 0.8rem;">החזרי מס מקצועיים</small>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">דף הבית</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/form25.html">טופס מורחב</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard.html">דשבורד ניהול</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tel:0501234567">
+                            <i class="bi bi-telephone"></i> 050-123-4567
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- כותרת הטופס -->
+    <div class="form-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 class="form-title">טופס החזר מס מפורט</h1>
+                    <p class="form-subtitle">מלאו את הטופס המפורט להערכת החזר מדויקת יותר. המידע מאובטח ונשמר בצורה חסויה.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <!-- טור שמאל: התקדמות והחזר משוער -->
+            <div class="col-lg-4">
+                <div class="progress-container">
+                    <div class="progress-card fade-in">
+                        <h4 class="progress-title"><i class="bi bi-list-check section-icon"></i> התקדמות הטופס</h4>
+                        
+                        <div class="progress-step step-active">
+                            <div class="step-number">1</div>
+                            <div class="step-text">
+                                <strong>פרטים אישיים</strong>
+                                <small class="d-block text-muted">מידע בסיסי</small>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-step">
+                            <div class="step-number">2</div>
+                            <div class="step-text">
+                                <strong>נתוני הכנסות</strong>
+                                <small class="d-block text-muted">עבודה והכנסות</small>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-step">
+                            <div class="step-number">3</div>
+                            <div class="step-text">
+                                <strong>הוצאות אישיות</strong>
+                                <small class="d-block text-muted">רכב, רפואה, צדקה</small>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-step">
+                            <div class="step-number">4</div>
+                            <div class="step-text">
+                                <strong>נקודות זיכוי</strong>
+                                <small class="d-block text-muted">זכאויות נוספות</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-card fade-in" style="animation-delay: 0.2s">
+                        <h4 class="progress-title"><i class="bi bi-calculator section-icon"></i> הערכת החזר</h4>
+                        
+                        <div class="refund-preview">
+                            <div class="mb-2">החזר מס משוער:</div>
+                            <div class="refund-amount" id="estimatedRefund25">0</div>
+                            <div class="small mb-3">* על בסיס הנתונים שהוזנו</div>
+                            <div class="d-grid">
+                                <button class="btn btn-light" onclick="calculateRefund()">
+                                    <i class="bi bi-calculator"></i> חשב עכשיו
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6><i class="bi bi-info-circle text-primary"></i> הערות חשובות:</h6>
+                            <ul class="small text-muted ps-3">
+                                <li>ההערכה הראשונית אינה מחייבת</li>
+                                <li>לאחר הבדיקה המקצועית יתקבל סכום מדויק</li>
+                                <li>עמלת הצלחה: 10% מסכום ההחזר בפועל</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-card fade-in" style="animation-delay: 0.4s">
+                        <h4 class="progress-title"><i class="bi bi-shield-check section-icon"></i> אבטחת מידע</h4>
+                        <p class="small text-muted">
+                            <i class="bi bi-check-circle-fill text-success"></i> המידע מועבר בצורה מוצפנת<br>
+                            <i class="bi bi-check-circle-fill text-success"></i> לא נעשה שימוש מסחרי בנתונים<br>
+                            <i class="bi bi-check-circle-fill text-success"></i> תואם לתקנות הגנת הפרטיות
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- טור ימין: הטופס עצמו -->
+            <div class="col-lg-8">
+                <form id="extendedForm">
+                    <!-- סעיף 1: פרטים אישיים -->
+                    <div class="form-section fade-in">
+                        <h3 class="section-title">
+                            <i class="bi bi-person-badge section-icon"></i>
+                            1. פרטים אישיים
+                        </h3>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="fullName" class="form-label">
+                                    <span class="required-star">*</span> שם מלא
+                                </label>
+                                <input type="text" class="form-control form-control-lg" id="fullName" name="fullName" required placeholder="שם ושם משפחה">
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="form-label">
+                                    <span class="required-star">*</span> טלפון
+                                </label>
+                                <input type="tel" class="form-control form-control-lg" id="phone" name="phone" required placeholder="05X-XXXXXXX">
+                                <div class="help-text">נציג יצור איתך קשר להשלמת התהליך</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">
+                                    <span class="required-star">*</span> אימייל
+                                </label>
+                                <input type="email" class="form-control form-control-lg" id="email" name="email" required placeholder="your.email@example.com">
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="idNumber" class="form-label">מספר ת.ז.</label>
+                                <input type="text" class="form-control form-control-lg" id="idNumber" name="idNumber" placeholder="תעודת זהות">
+                                <div class="help-text">אופציונלי לבדיקה ראשונית</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="personalStatus" class="form-label">מצב אישי</label>
+                                <select class="form-control form-control-lg" id="personalStatus" name="personalStatus">
+                                    <option value="">בחר מצב</option>
+                                    <option value="single">רווק/ה</option>
+                                    <option value="married">נשוי/ה</option>
+                                    <option value="divorced">גרוש/ה</option>
+                                    <option value="widowed">אלמן/נה</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="children" class="form-label">מספר ילדים</label>
+                                <select class="form-control form-control-lg" id="children" name="children">
+                                    <option value="">בחר מספר</option>
+                                    <option value="0">אין ילדים</option>
+                                    <option value="1">ילד אחד</option>
+                                    <option value="2">שני ילדים</option>
+                                    <option value="3">שלושה ילדים</option>
+                                    <option value="4+">ארבעה ילדים ומעלה</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- סעיף 2: הכנסות -->
+                    <div class="form-section fade-in" style="animation-delay: 0.1s">
+                        <h3 class="section-title">
+                            <i class="bi bi-cash-coin section-icon"></i>
+                            2. הכנסות ועבודה
+                        </h3>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="monthlyIncome" class="form-label">הכנסה חודשית ממוצעת</label>
+                                <select class="form-control form-control-lg" id="monthlyIncome" name="monthlyIncome">
+                                    <option value="">בחר טווח</option>
+                                    <option value="0-5000">עד 5,000 </option>
+                                    <option value="5000-10000">5,000-10,000 </option>
+                                    <option value="10000-15000">10,000-15,000 </option>
+                                    <option value="15000-20000">15,000-20,000 </option>
+                                    <option value="20000+">מעל 20,000 </option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="employmentType" class="form-label">סוג העסקה</label>
+                                <select class="form-control form-control-lg" id="employmentType" name="employmentType">
+                                    <option value="">בחר סוג</option>
+                                    <option value="employee">שכיר</option>
+                                    <option value="self-employed">עצמאי</option>
+                                    <option value="freelancer">פרילנסר</option>
+                                    <option value="pensioner">פנסיונר</option>
+                                    <option value="student">סטודנט</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="workYears" class="form-label">שנות ותק בעבודה</label>
+                                <select class="form-control form-control-lg" id="workYears" name="workYears">
+                                    <option value="">בחר טווח</option>
+                                    <option value="0-2">עד שנתיים</option>
+                                    <option value="2-5">2-5 שנים</option>
+                                    <option value="5-10">5-10 שנים</option>
+                                    <option value="10-20">10-20 שנים</option>
+                                    <option value="20+">מעל 20 שנה</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="lastCalculation" class="form-label">מתי בפעם האחרונה בדקת החזר מס?</label>
+                                <select class="form-control form-control-lg" id="lastCalculation" name="lastCalculation">
+                                    <option value="">בחר זמן</option>
+                                    <option value="never">אף פעם</option>
+                                    <option value="this_year">השנה</option>
+                                    <option value="1-2_years">לפני 1-2 שנים</option>
+                                    <option value="3-5_years">לפני 3-5 שנים</option>
+                                    <option value="5+_years">לפני מעל 5 שנים</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- סעיף 3: הוצאות אישיות -->
+                    <div class="form-section fade-in" style="animation-delay: 0.2s">
+                        <h3 class="section-title">
+                            <i class="bi bi-cart-check section-icon"></i>
+                            3. הוצאות אישיות
+                        </h3>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="carExpenses" class="form-label">הוצאות רכב (שנתי)</label>
+                                <select class="form-control form-control-lg" id="carExpenses" name="carExpenses">
+                                    <option value="">בחר טווח</option>
+                                    <option value="0">אין הוצאות</option>
+                                    <option value="0-10000">עד 10,000 </option>
+                                    <option value="10000-20000">10,000-20,000 </option>
+                                    <option value="20000-30000">20,000-30,000 </option>
+                                    <option value="30000+">מעל 30,000 </option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="medicalExpenses" class="form-label">הוצאות רפואיות (שנתי)</label>
+                                <select class="form-control form-control-lg" id="medicalExpenses" name="medicalExpenses">
+                                    <option value="">בחר טווח</option>
+                                    <option value="0">אין הוצאות</option>
+                                    <option value="0-5000">עד 5,000 </option>
+                                    <option value="5000-10000">5,000-10,000 </option>
+                                    <option value="10000-20000">10,000-20,000 </option>
+                                    <option value="20000+">מעל 20,000 </option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="donations" class="form-label">תרומות למוסדות מוכרים</label>
+                                <select class="form-control form-control-lg" id="donations" name="donations">
+                                    <option value="">בחר טווח</option>
+                                    <option value="0">אין תרומות</option>
+                                    <option value="0-2000">עד 2,000 </option>
+                                    <option value="2000-5000">2,000-5,000 </option>
+                                    <option value="5000-10000">5,000-10,000 </option>
+                                    <option value="10000+">מעל 10,000 </option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="education" class="form-label">הוצאות לימודים/השכלה</label>
+                                <select class="form-control form-control-lg" id="education" name="education">
+                                    <option value="">בחר טווח</option>
+                                    <option value="0">אין הוצאות</option>
+                                    <option value="0-10000">עד 10,000 </option>
+                                    <option value="10000-20000">10,000-20,000 </option>
+                                    <option value="20000-30000">20,000-30,000 </option>
+                                    <option value="30000+">מעל 30,000 </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- סעיף 4: נקודות זיכוי -->
+                    <div class="form-section fade-in" style="animation-delay: 0.3s">
+                        <h3 class="section-title">
+                            <i class="bi bi-award section-icon"></i>
+                            4. נקודות זיכוי וזכאויות
+                        </h3>
+                        
+                        <div class="mb-4">
+                            <p class="text-muted">סמן את כל הנקודות הרלוונטיות עבורך:</p>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="socialBenefits" name="socialBenefits" value="yes">
+                                        <label class="form-check-label" for="socialBenefits">
+                                            קבלת קצבאות/מענקים מהמוסד לביטוח לאומי
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="mortgage" name="mortgage" value="yes">
+                                        <label class="form-check-label" for="mortgage">
+                                            משכנתא על דירה/נכס
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="pension" name="pension" value="yes">
+                                        <label class="form-check-label" for="pension">
+                                            הפקדות לקרן פנסיה/קופת גמל
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="investments" name="investments" value="yes">
+                                        <label class="form-check-label" for="investments">
+                                            השקעות בבורסה/קרנות נאמנות
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="rental" name="rental" value="yes">
+                                        <label class="form-check-label" for="rental">
+                                            הכנסה מדמי שכירות
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="student" name="student" value="yes">
+                                        <label class="form-check-label" for="student">
+                                            סטודנט/ת פעיל/ה
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="disability" name="disability" value="yes">
+                                        <label class="form-check-label" for="disability">
+                                            נכות/מגבלה רפואית
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="hitech" name="hitech" value="yes">
+                                        <label class="form-check-label" for="hitech">
+                                            עובד/ת בהייטק או תעשייה עתירת ידע
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="workFromHome" name="workFromHome" value="yes">
+                                        <label class="form-check-label" for="workFromHome">
+                                            עבודה מהבית (שליש מהזמן לפחות)
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="financeEducation" name="financeEducation" value="yes">
+                                        <label class="form-check-label" for="financeEducation">
+                                            השתלמויות מקצועיות ממומנות
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- הודעת סיכום -->
+                    <div class="form-section fade-in" style="animation-delay: 0.4s">
+                        <div class="alert alert-info alert-message">
+                            <h5><i class="bi bi-info-circle"></i> מה קורה אחרי שליחת הטופס?</h5>
+                            <ol class="mb-0">
+                                <li>קבלת אישור מיידי עם מספר פניה</li>
+                                <li>נציג יצור איתך קשר בתוך 24 שעות</li>
+                                <li>בדיקה מקצועית של המומחים שלנו</li>
+                                <li>קבלת דוח החזר מס מדויק</li>
+                                <li>טיפול בהליכים מול רשות המיסים</li>
+                                <li>קבלת הכסף לחשבונך</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" id="termsAgreement" required>
+                            <label class="form-check-label" for="termsAgreement">
+                                אני מסכים/ה <a href="#" class="text-decoration-none">לתנאי השימוש</a> ולטיפול במידע שלי לצורך בדיקת זכאות להחזר מס.
+                            </label>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-submit" id="submitBtn25">
+                                <i class="bi bi-send-check"></i> שלח טופס וקבל הערכת החזר מדויקת
+                            </button>
+                        </div>
+                        
+                        <div id="message25" class="mt-4"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- פוטר -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4 class="mb-3">דוד ופריד</h4>
+                    <p>החזרי מס מקצועיים מאז 2010. מסייעים לאלפי ישראלים לקבל את המגיע להם מהמדינה.</p>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <h4 class="mb-3">קישורים</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="/" class="text-white text-decoration-none">דף הבית</a></li>
+                        <li class="mb-2"><a href="/form25.html" class="text-white text-decoration-none">טופס מורחב</a></li>
+                        <li class="mb-2"><a href="/dashboard.html" class="text-white text-decoration-none">דשבורד ניהול</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <h4 class="mb-3">יצירת קשר</h4>
+                    <p><i class="bi bi-geo-alt me-2"></i> תל אביב, ישראל</p>
+                    <p><i class="bi bi-telephone me-2"></i> 050-123-4567</p>
+                    <p><i class="bi bi-envelope me-2"></i> info@david-farid.co.il</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 דוד ופריד החזרי מס. כל הזכויות שמורות.</p>
+                <p class="small">המידע באתר זה אינו מהווה ייעוץ משפטי או מיסויי.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap & jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript שלנו -->
+    <script>
+        // חישוב החזר מס אוטומטי
+        function calculateRefund() {
+            let refund = 1000;
+            
+            // הכנסה חודשית
+            const income = document.getElementById('monthlyIncome').value;
+            if (income === "20000+") refund += 3000;
+            if (income === "15000-20000") refund += 2000;
+            if (income === "10000-15000") refund += 1000;
+            
+            // ילדים
+            const children = document.getElementById('children').value;
+            if (children === "1") refund += 500;
+            if (children === "2") refund += 1000;
+            if (children === "3") refund += 1500;
+            if (children === "4+") refund += 2000;
+            
+            // הוצאות רכב
+            const carExp = document.getElementById('carExpenses').value;
+            if (carExp === "10000-20000") refund += 800;
+            if (carExp === "20000-30000") refund += 1500;
+            if (carExp === "30000+") refund += 2500;
+            
+            // הוצאות רפואיות
+            const medical = document.getElementById('medicalExpenses').value;
+            if (medical === "5000-10000") refund += 600;
+            if (medical === "10000-20000") refund += 1200;
+            if (medical === "20000+") refund += 2000;
+            
+            // תרומות
+            const donations = document.getElementById('donations').value;
+            if (donations === "2000-5000") refund += 300;
+            if (donations === "5000-10000") refund += 600;
+            if (donations === "10000+") refund += 1000;
+            
+            // נקודות בונוס אקראיות
+            refund += Math.floor(Math.random() * 3000);
+            
+            // עדכון התצוגה
+            document.getElementById('estimatedRefund25').textContent = '' + refund.toLocaleString();
+            
+            // הודעה קטנה
+            showMessage25(`✅ החזר מס משוער: ${refund.toLocaleString()}`, 'success', false);
+            
+            return refund;
+        }
+        
+        // ולידציה לטלפון
+        function validatePhone(phone) {
+            const phoneRegex = /^05\d-?\d{7}$/;
+            return phoneRegex.test(phone.replace(/-/g, ''));
+        }
+        
+        // ולידציה למייל
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        // הצגת הודעות
+        function showMessage25(text, type, isAlert = true) {
+            const messageDiv = document.getElementById('message25');
+            
+            if (isAlert) {
+                const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+                messageDiv.innerHTML = `
+                    <div class="alert ${alertClass} alert-message alert-dismissible fade show" role="alert">
+                        ${text}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                `;
+                
+                setTimeout(() => {
+                    const alert = messageDiv.querySelector('.alert');
+                    if (alert) {
+                        const bsAlert = new bootstrap.Alert(alert);
+                        bsAlert.close();
+                    }
+                }, 10000);
+            } else {
+                messageDiv.innerHTML = `<div class="text-center text-${type === 'success' ? 'success' : 'danger'}">${text}</div>`;
+                setTimeout(() => {
+                    messageDiv.innerHTML = '';
+                }, 3000);
+            }
+        }
+        
+        // שליחת הטופס
+        document.getElementById('extendedForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // איסוף הנתונים
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                idNumber: document.getElementById('idNumber').value,
+                personalStatus: document.getElementById('personalStatus').value,
+                children: document.getElementById('children').value,
+                monthlyIncome: document.getElementById('monthlyIncome').value,
+                employmentType: document.getElementById('employmentType').value,
+                carExpenses: document.getElementById('carExpenses').value,
+                medicalExpenses: document.getElementById('medicalExpenses').value,
+                donations: document.getElementById('donations').value,
+                education: document.getElementById('education').value,
+                workYears: document.getElementById('workYears').value,
+                lastCalculation: document.getElementById('lastCalculation').value,
+                mortgage: document.getElementById('mortgage').checked ? 'yes' : '',
+                socialBenefits: document.getElementById('socialBenefits').checked ? 'yes' : '',
+                investments: document.getElementById('investments').checked ? 'yes' : '',
+                pension: document.getElementById('pension').checked ? 'yes' : '',
+                rental: document.getElementById('rental').checked ? 'yes' : '',
+                student: document.getElementById('student').checked ? 'yes' : '',
+                disability: document.getElementById('disability').checked ? 'yes' : '',
+                hitech: document.getElementById('hitech').checked ? 'yes' : '',
+                workFromHome: document.getElementById('workFromHome').checked ? 'yes' : '',
+                financeEducation: document.getElementById('financeEducation').checked ? 'yes' : ''
+            };
+            
+            // ולידציה בסיסית
+            if (!formData.fullName || !formData.phone || !formData.email) {
+                showMessage25('אנא מלא את כל השדות המסומנים ב-*', 'danger');
+                return;
+            }
+            
+            if (!validatePhone(formData.phone)) {
+                showMessage25('מספר הטלפון אינו תקין. אנא הכנס מספר ישראלי תקין (05X-XXXXXXX)', 'danger');
+                return;
+            }
+            
+            if (!validateEmail(formData.email)) {
+                showMessage25('כתובת האימייל אינה תקינה.', 'danger');
+                return;
+            }
+            
+            // שינוי כפתור לטובת אינדיקטור טעינה
+            const submitBtn = document.getElementById('submitBtn25');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> שולח טופס...';
+            submitBtn.disabled = true;
+            
+            // שליחה לשרת
+            fetch('/api/submit25', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showMessage25(
+                        `✅ ${data.message}<br>` +
+                        `מספר פניה: <strong>${data.submission_id}</strong><br>` +
+                        `החזר משוער: <strong>${data.estimated_refund.toLocaleString()}</strong><br>` +
+                        `עמלת הצלחה: ${data.commission.toLocaleString()}<br><br>` +
+                        `<small>נציג יצור איתך קשר בהקדם</small>`,
+                        'success'
+                    );
+                    
+                    // איפוס הטופס
+                    document.getElementById('extendedForm').reset();
+                    document.getElementById('estimatedRefund25').textContent = '0';
+                    
+                    // רישום לקונסול לניפוי באגים
+                    console.log('הגשה מוצלחת:', data);
+                } else {
+                    showMessage25(`❌ שגיאה: ${data.error}`, 'danger');
+                }
+            })
+            .catch(error => {
+                console.error('שגיאה:', error);
+                showMessage25('❌ שגיאה בשליחה לשרת. אנא נסה שוב מאוחר יותר.', 'danger');
+            })
+            .finally(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+        
+        // עדכון אוטומטי של התקדמות
+        document.querySelectorAll('input, select, textarea').forEach(element => {
+            element.addEventListener('change', function() {
+                // עדכון התקדמות ויזואלית
+                const sections = document.querySelectorAll('.form-section');
+                let activeSection = 1;
+                
+                for (let i = 0; i < sections.length; i++) {
+                    const inputs = sections[i].querySelectorAll('input, select, textarea');
+                    let hasValue = false;
+                    
+                    inputs.forEach(input => {
+                        if (input.type === 'checkbox' || input.type === 'radio') {
+                            if (input.checked) hasValue = true;
+                        } else if (input.value.trim() !== '') {
+                            hasValue = true;
+                        }
+                    });
+                    
+                    if (hasValue && i + 1 > activeSection) {
+                        activeSection = i + 1;
+                    }
+                }
+                
+                // עדכון התקדמות בצד
+                document.querySelectorAll('.progress-step').forEach((step, index) => {
+                    if (index < activeSection) {
+                        step.classList.add('step-active');
+                    } else {
+                        step.classList.remove('step-active');
+                    }
+                });
+                
+                // חישוב אוטומטי של החזר אם יש מספיק נתונים
+                const name = document.getElementById('fullName').value;
+                const phone = document.getElementById('phone').value;
+                const email = document.getElementById('email').value;
+                const income = document.getElementById('monthlyIncome').value;
+                
+                if (name && phone && email && income) {
+                    setTimeout(calculateRefund, 500);
+                }
+            });
+        });
+        
+        // חישוב ראשוני בעת טעינת הדף
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('טופס מורחב דוד ופריד - טעון');
+            
+            // הוספת אפקטים לשדות חובה
+            document.querySelectorAll('[required]').forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (!this.value.trim()) {
+                        this.classList.add('is-invalid');
+                    } else {
+                        this.classList.remove('is-invalid');
+                    }
+                });
+            });
+            
+            // הוספת אנימציה לסעיפים כשהם נכנסים לטווח ראייה
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.form-section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>

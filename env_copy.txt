@@ -1,0 +1,6 @@
+﻿PORT=5000
+NODE_ENV=development
+COMPANY_NAME=David & Fars Accounting
+COMPANY_PHONE=+972-50-539-0237
+COMPANY_EMAIL=kaufmanungar@gmail.com
+COMMISSION_RATE=10

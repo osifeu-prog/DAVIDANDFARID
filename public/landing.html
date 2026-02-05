@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David & Fars | החזרי מס</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            margin-bottom: 25px;
+        }
+
+        .logo h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .logo p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        .header h2 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .nav-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .nav-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-icon {
+            font-size: 3rem;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .nav-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4CAF50;
+            margin-bottom: 5px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+
+        .contact-item i {
+            color: #4CAF50;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 25px 20px;
+            }
+
+            .logo h1 {
+                font-size: 2rem;
+            }
+
+            .nav-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                gap: 15px;
+            }
+
+            .stat-item {
+                min-width: 100px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <h1>David & Fars</h1>
+                <p>רואי חשבון | החזרי מס</p>
+            </div>
+
+            <h2>גלו <span class="highlight">כמה מס</span> מגיע לכם בחזרה!</h2>
+            <p>80% מהאנשים זכאים להחזר מס ואינם מודעים לכך. אל תוותרו על הכסף שלכם!</p>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">10%</div>
+                    <div class="stat-label">עמלת הצלחה</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">לקוחות מרוצים</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">85M</div>
+                    <div class="stat-label">שקלים הוחזרו</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="nav-cards">
+            <a href="index.html" class="nav-card">
+                <div class="nav-icon">
+                    <i class="fas fa-file-signature"></i>
+                </div>
+                <h3>טופס מהיר</h3>
+                <p>טופס קצר להערכת החזר מס ראשונית</p>
+            </a>
+
+            <a href="form25.html" class="nav-card">
+                <div class="nav-icon">
+                    <i class="fas fa-list-alt"></i>
+                </div>
+                <h3>טופס מורחב</h3>
+                <p>טופס 25 שאלות להערכת החזר מס מדויקת</p>
+            </a>
+
+            <a href="dashboard.html" class="nav-card">
+                <div class="nav-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>דשבורד ניהול</h3>
+                <p>ניהול פניות וייצוא דוחות</p>
+            </a>
+        </div>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>+972 50-539-0237</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>kaufmanungar@gmail.com</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-clock"></i>
+                <span>א'-ה' 9:00-18:00</span>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2024 David & Fars Accounting. כל הזכויות שמורות.</p>
+            <p>תנאי השירות: 10% עמלת הצלחה מהסכום שהוחזר לאחר אישור מס הכנסה</p>
+        </footer>
+    </div>
+
+    <script>
+        // בדיקת חיבור API
+        window.addEventListener('load', async () => {
+            try {
+                const response = await fetch('/api/health');
+                const data = await response.json();
+                console.log('API Health:', data.status);
+            } catch (error) {
+                console.warn('API connection test failed');
+            }
+        });
+    </script>
+</body>
+</html>

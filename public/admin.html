@@ -1,0 +1,364 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>התחברות מנהלים | דוד ופריד</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!-- Google Fonts - Heebo -->
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+        }
+        
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .login-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: fadeIn 0.8s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .brand-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .brand-logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .brand-highlight {
+            color: var(--secondary-color);
+        }
+        
+        .brand-subtitle {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .form-control-lg {
+            border-radius: 12px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control-lg:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+        }
+        
+        .btn-login {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #2980b9 100%);
+            border: none;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            width: 100%;
+            color: white;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn-login:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        .security-features {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+        }
+        
+        .security-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        .security-item i {
+            color: var(--success-color);
+            margin-left: 10px;
+        }
+        
+        .forgot-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .forgot-link a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .forgot-link a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+        
+        .error-message {
+            animation: shake 0.5s ease;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+        
+        .login-footer {
+            text-align: center;
+            margin-top: 30px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="brand-header">
+                <div class="brand-logo">
+                    <span class="brand-highlight">דוד</span> ופריד
+                </div>
+                <div class="brand-subtitle">פאנל ניהול מנהלים</div>
+            </div>
+            
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label for="username" class="form-label">שם משתמש</label>
+                    <input type="text" class="form-control form-control-lg" id="username" name="username" required placeholder="הכנס שם משתמש">
+                    <div class="form-text">השם משתמש שניתן לך על ידי המנהל הראשי</div>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="password" class="form-label">סיסמה</label>
+                    <input type="password" class="form-control form-control-lg" id="password" name="password" required placeholder="הכנס סיסמה">
+                    <div class="form-text">הסיסמה חייבת להכיל לפחות 8 תווים</div>
+                </div>
+                
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">זכור אותי במכשיר זה</label>
+                </div>
+                
+                <div id="loginMessage"></div>
+                
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-login" id="loginBtn">
+                        <i class="bi bi-box-arrow-in-right"></i> התחבר למערכת
+                    </button>
+                    
+                    <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='/'">
+                        <i class="bi bi-arrow-right"></i> חזרה לאתר הראשי
+                    </button>
+                </div>
+            </form>
+            
+            <div class="security-features">
+                <div class="security-item">
+                    <i class="bi bi-shield-check"></i>
+                    <span>התחברות מאובטחת עם הצפנה</span>
+                </div>
+                <div class="security-item">
+                    <i class="bi bi-clock-history"></i>
+                    <span>פגישת ההתחברות תתפקע לאחר 30 דקות</span>
+                </div>
+                <div class="security-item">
+                    <i class="bi bi-incognito"></i>
+                    <span>אין לאתחל סיסמאות למייל לא מאומת</span>
+                </div>
+            </div>
+            
+            <div class="forgot-link">
+                <a href="#" onclick="showForgotPassword()">שכחתי סיסמה</a>
+            </div>
+        </div>
+        
+        <div class="login-footer">
+            © 2023 דוד ופריד החזרי מס. גישה מורשית בלבד.
+        </div>
+    </div>
+
+    <!-- jQuery & Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript של עמוד ההתחברות -->
+    <script>
+        // פונקציה להצגת הודעות
+        function showMessage(text, type, isError = false) {
+            const messageDiv = document.getElementById('loginMessage');
+            
+            if (isError) {
+                messageDiv.innerHTML = `
+                    <div class="alert alert-danger error-message alert-dismissible fade show" role="alert">
+                        <i class="bi bi-exclamation-triangle"></i> ${text}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                `;
+            } else {
+                const alertClass = type === 'success' ? 'alert-success' : 'alert-info';
+                messageDiv.innerHTML = `
+                    <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+                        ${text}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                `;
+            }
+        }
+        
+        // בדיקת תקינות סיסמה
+        function validatePassword(password) {
+            // לפחות 8 תווים
+            if (password.length < 8) return false;
+            
+            // לפחות אות אחת גדולה
+            if (!/[A-Z]/.test(password)) return false;
+            
+            // לפחות מספר אחד
+            if (!/\d/.test(password)) return false;
+            
+            return true;
+        }
+        
+        // שליחת טופס ההתחברות
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+            
+            // ולידציה בסיסית
+            if (!username || !password) {
+                showMessage('אנא מלא את כל השדות', 'danger', true);
+                return;
+            }
+            
+            // בדיקת סיסמה (בדוגמה זו נשתמש בסיסמה קבועה)
+            // בפרויקט אמיתי זה יוחלף בבדיקה מול מסד הנתונים
+            const validUsername = 'admin';
+            const validPassword = 'Admin123!';
+            
+            // שינוי כפתור לטובת אינדיקטור טעינה
+            const loginBtn = document.getElementById('loginBtn');
+            const originalText = loginBtn.innerHTML;
+            loginBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> מתחבר...';
+            loginBtn.disabled = true;
+            
+            // הדמיית תהליך התחברות
+            setTimeout(() => {
+                if (username === validUsername && password === validPassword) {
+                    // הצלחה
+                    showMessage('✅ התחברות מוצלחת! מעביר לדשבורד...', 'success');
+                    
+                    // שמירת סשן (בדוגמה זו נשתמש ב-localStorage)
+                    if (rememberMe) {
+                        localStorage.setItem('admin_logged_in', 'true');
+                        localStorage.setItem('admin_username', username);
+                    } else {
+                        sessionStorage.setItem('admin_logged_in', 'true');
+                        sessionStorage.setItem('admin_username', username);
+                    }
+                    
+                    // מעבר לדשבורד לאחר 2 שניות
+                    setTimeout(() => {
+                        window.location.href = '/dashboard.html';
+                    }, 2000);
+                } else {
+                    // כשלון
+                    showMessage('❌ שם משתמש או סיסמה לא נכונים', 'danger', true);
+                    loginBtn.innerHTML = originalText;
+                    loginBtn.disabled = false;
+                    
+                    // אנימציה לשדה סיסמה
+                    document.getElementById('password').classList.add('is-invalid');
+                    
+                    // ניקוי שדה סיסמה לאחר שגיאה
+                    setTimeout(() => {
+                        document.getElementById('password').value = '';
+                    }, 1000);
+                }
+            }, 1500);
+        });
+        
+        // הצגת חלון שכחתי סיסמה
+        function showForgotPassword() {
+            showMessage(
+                'לאתחול סיסמה אנא פנה למנהל המערכת הראשי במייל: <strong>admin@david-farid.co.il</strong>',
+                'info'
+            );
+        }
+        
+        // בדיקה אם המשתמש כבר מחובר
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('עמוד התחברות מנהלים - טעון');
+            
+            // בדיקה אם יש סשן פעיל
+            const isLoggedIn = localStorage.getItem('admin_logged_in') || sessionStorage.getItem('admin_logged_in');
+            
+            if (isLoggedIn === 'true') {
+                // אם כבר מחובר, מעבר אוטומטי לדשבורד
+                window.location.href = '/dashboard.html';
+            }
+            
+            // הוספת ולידציה בזמן אמת לשדה סיסמה
+            document.getElementById('password').addEventListener('input', function() {
+                const password = this.value;
+                
+                if (password.length > 0 && password.length < 8) {
+                    this.classList.add('is-invalid');
+                } else {
+                    this.classList.remove('is-invalid');
+                }
+            });
+            
+            // הדגמה של סיסמה לדוגמה (רק למטרות פיתוח)
+            console.log('למטרות פיתוח: שם משתמש: admin, סיסמה: Admin123!');
+        });
+    </script>
+</body>
+</html>
