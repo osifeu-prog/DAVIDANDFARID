@@ -59,3 +59,8 @@ config_files.txt
 css_files.txt
 file_list.csv
 js_files.txt
+node_modules/
+.env
+*.db
+*.log
+.DS_Store
