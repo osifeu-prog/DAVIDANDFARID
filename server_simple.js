@@ -1,4 +1,4 @@
-const express = require("express");
+﻿const express = require("express");
 const cors = require("cors");
 const path = require("path");
 
@@ -11,13 +11,11 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Route for health check
+
+// Simple health check for Railway
 app.get("/api/health", (req, res) => {
-    res.json({
-        status: "healthy",
-        timestamp: new Date().toISOString(),
-        message: "David & Farid Tax Refund System",
-        version: "1.0.0"
-    });
+  res.json({ status: "ok", timestamp: new Date().toISOString() });
+}););
 });
 
 // Route for stats
@@ -155,3 +153,4 @@ app.listen(PORT, () => {
     console.log(`?? API Health: http://localhost:${PORT}/api/health`);
     console.log(`?? Forms are working! Database is mocked for now.`);
 });
+
